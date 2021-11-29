@@ -1,0 +1,11 @@
+@import 'variables';
+
+.dashboard-card {
+    background-color: $primary-color;
+    color: #ffffff;
+}
+
+.dashboard-card:hover {
+    background-color: $primary-dark;
+    color: $accent-dark;
+}

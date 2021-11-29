@@ -1,0 +1,27 @@
+<form [formGroup]="deviceForm" class="add-device__form">
+        <div class="form-group">
+          <div class="form-group__top">
+            <label>Name:</label>
+            <mat-error *ngIf="hasError('name', 'required')">Name is Required</mat-error>
+          </div>
+          <div>
+            <input matInput placeholder="Device name" formControlName="name">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-group__top">
+              <label>Serial #:</label>
+            <mat-error *ngIf="hasError('serialNumber', 'required')">Serial Number is Required</mat-error>
+          </div>
+            <input matInput placeholder="Serial #" formControlName="serialNumber">
+        </div>
+        <div class="form-group">
+          <div class="form-group__top">
+            <label>Description:</label>
+          </div>
+          <textarea matInput placeholder="Device description" formControlName="description"> </textarea>
+        </div>
+
+        <button mat-raised-button class="add-device__confirm btn btn-danger" type="button" (click)="register()" [disabled]="!deviceForm.valid || isLoading">Add device</button>
+        <button class="add-device__reset btn btn-outline">Cancel</button>
+    </form>

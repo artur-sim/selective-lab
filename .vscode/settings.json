@@ -1,0 +1,9 @@
+{
+    "typescript.tsdk": "node_modules\\typescript\\lib",
+    "appService.zipIgnorePattern": [
+        "node_modules{,/**}",
+        ".vscode{,/**}"
+    ],
+    "appService.defaultWebAppToDeploy": "/subscriptions/a333b62d-287b-40de-90b0-544f459d0f03/resourceGroups/Prod_US_West/providers/Microsoft.Web/sites/cannabimeter-web",
+    "appService.deploySubpath": "dist\\SelectiveLab-WebClient"
+}
