@@ -106,7 +106,7 @@ $SelectiveLab-WebClient-theme: mat.define-light-theme((
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Inter, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family: Inter, "Helvetica Neue", sans-serif !important; }
 
 .center-box {
   height: 100%;
@@ -194,6 +194,43 @@ svg,path{
   line-height: 17px;
 }
 
+.notification{
+  position: fixed;
+  background: #222222;
+  box-shadow: 0px 26px 21px -20px rgba(34, 34, 34, 0.13);
+  border-radius: 4px;
+  right: 16px;
+  bottom: 16px;
+  width: 270px;
+  padding: 16px;
+  color:$white-color;
+  &__close{
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    width: 18px;
+    height: 18px;
+    border:none;
+    background-color: transparent;
+    padding: 0;
+    cursor: pointer;
+  }
+  &__title{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 18px;
+    letter-spacing: -0.5px;
+  }
+  &__desc{
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    letter-spacing: -0.5px;
+    margin-top: 4px;
+    opacity: 0.6;
+  }
+}
+
 @media screen and (max-width: 992px){
   .sidenav-content{
     margin-left: 0 !important;
@@ -210,5 +247,18 @@ svg,path{
   .mat-list-item-content{
     padding: 0 !important;
   }
+  .notification{
+    bottom: unset;
+    top: 24px;
+    left: 50%;
+    right: unset;
+    transform: translateX(-50%);
+    width: 350px;
+  }
 }
 
+@media screen and (max-width: 450px){
+  .notification{
+    width: calc(100% - 24px);
+  }
+}
