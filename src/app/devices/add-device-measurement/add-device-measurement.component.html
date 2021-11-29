@@ -1,0 +1,34 @@
+<div fxLayout="row" fxLayoutAlign="start center">
+    <mat-card fxFlex>
+        <mat-card-title class="title">Record Measurement</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="deviceMeasurementForm" fxLayout="column">
+            <mat-form-field>
+              <input matInput formControlName="deviceId" readonly>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Potency" formControlName="potency" type="number">
+              <mat-error *ngIf="hasError('potency', 'required')">Potency is Required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Note" formControlName="note" type="text">
+            </mat-form-field>
+            <mat-form-field>
+              <input matInput placeholder="Analyst" formControlName="analyst" type="text">
+              <mat-error *ngIf="hasError('potency', 'required')">Analyst is Required</mat-error>
+            </mat-form-field>
+            <mat-form-field>
+              <select matNativeControl formControlName="strainId" name="strain">
+                <option [ngValue]="null">Select Strain</option>
+                <option *ngFor="let strain of availableStrains$ | async" [ngValue]="strain.id">
+                  {{strain.name}}
+                </option>
+              </select>
+            </mat-form-field>
+            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+              <button mat-raised-button color="primary" type="button" (click)="saveRecord()" [disabled]="!deviceMeasurementForm.valid || isLoading">Record</button>
+            </div>
+          </form>
+        </mat-card-content>
+    </mat-card>
+</div>

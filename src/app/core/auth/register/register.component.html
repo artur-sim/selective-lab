@@ -1,0 +1,53 @@
+<div class="login">
+  <div class="login__inner">
+    <a routerLink="/" class="login__logo">
+      <img src="../../../assets/images/logo-blue.png" alt="logo" />
+    </a>
+    <div class="login__form">
+      <form [formGroup]="registerForm" fxLayout="column">
+        <h1 class="title">Register</h1>
+        <div class="form-group">
+          <div class="form-group__top">
+            <label>Email:</label>
+            <div>
+              <mat-error *ngIf="hasError('email', 'email')">Invalid Email</mat-error>
+              <mat-error *ngIf="hasError('email', 'required')">Email is Required</mat-error>
+            </div>
+          </div>
+          <div>
+            <input matInput placeholder="Email" formControlName="email">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-group__top">
+            <label>Password:</label>
+            <mat-error *ngIf="hasError('password', 'required')">Password is Required</mat-error>
+          </div>
+          <div>
+            <input matInput type="password" placeholder="Password" formControlName="password">
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="form-group__top">
+            <label>Confirm password:</label>
+            <mat-error *ngIf="hasError('password', 'required')">Password is Required</mat-error>
+          </div>
+          <div>
+            <input matInput type="password" placeholder="Confirm Password" formControlName="password">
+          </div>
+        </div>
+        <button mat-raised-button class="add-device__confirm btn btn-danger" type="button" [disabled]="!registerForm.valid || isLoading" (click)="register()">Sign Up</button>
+      </form>
+      <div class="login__form-bottom">
+        <div class="login__form-question">Already have an account?</div>
+        <a [routerLink]="['/login']" class="btn btn-outline login__form-reg">Log in</a>
+      </div>
+    </div>
+    <div class="login__footer">Selective Lab Inc, 2021</div>
+  </div>
+</div>
+
+
+
+
+

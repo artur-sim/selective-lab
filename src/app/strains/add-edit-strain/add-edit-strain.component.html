@@ -1,0 +1,21 @@
+<form [formGroup]="strainForm" class="add-strains__form">
+    <div class="form-group">
+      <div class="form-group__top">
+        <label>Name:</label>
+        <mat-error *ngIf="hasError('name', 'required')">Name is Required</mat-error>
+      </div>
+      <div>
+        <input matInput placeholder="Device name" formControlName="name">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="form-group__top">
+        <label>Description:</label>
+      </div>
+      <textarea matInput placeholder="Device description" formControlName="description"> </textarea>
+    </div>
+
+    <button mat-raised-button class="add-strains__confirm btn btn-danger" type="button" (click)="save()" [disabled]="!strainForm.valid || isLoading">Add strain</button>
+    <button class="add-strains__reset btn btn-outline" (click)="cancel()">Cancel</button>
+
+</form>

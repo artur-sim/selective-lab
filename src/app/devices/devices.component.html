@@ -1,0 +1,92 @@
+<div class="page-content" fxLayout="column" fxLayoutGap="10px">
+    <div class="page-top">
+      <h1 class="title">My Devices</h1>
+      <button mat-raised-button (click)="addDevice()" class="devices__btn btn btn-danger">
+        <span>Add new device</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M13 8H8V13C8 13.55 7.55 14 7 14C6.45 14 6 13.55 6 13V8H1C0.45 8 0 7.55 0 7C0 6.45 0.45 6 1 6H6V1C6 0.45 6.45 0 7 0C7.55 0 8 0.45 8 1V6H13C13.55 6 14 6.45 14 7C14 7.55 13.55 8 13 8Z" fill="white"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="table-block">
+      <table mat-table [dataSource]="devices$" class="data-table" fxFlex="100%">
+        <ng-container matColumnDef="name">
+          <th mat-header-cell *matHeaderCellDef>Device name</th>
+          <td mat-cell *matCellDef="let device">
+            <strong class="data-table__title">Device name</strong>
+            <span>{{device.name}}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="serial-number">
+          <th mat-header-cell *matHeaderCellDef>Serial number</th>
+          <td mat-cell *matCellDef="let device">
+            <strong class="data-table__title">Serial number</strong>
+            <span>{{device.serialNumberLastFour}}</span>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="description">
+          <th mat-header-cell *matHeaderCellDef>Description</th>
+          <td mat-cell *matCellDef="let device">
+            <strong class="data-table__title">Description</strong>
+            <span>{{device.description}}</span>
+          </td>
+        </ng-container>
+
+        <!--      <ng-container matColumnDef="archive">-->
+        <!--        <th mat-header-cell *matHeaderCellDef></th>-->
+        <!--        <td mat-cell *matCellDef="let device" (click)="$event.stopPropagation()">-->
+        <!--          <button mat-icon-button color="primary" aria-label="archive device" (click)="archiveDevice(device)">-->
+        <!--            <mat-icon>close</mat-icon>-->
+        <!--          </button>-->
+        <!--        </td>-->
+        <!--      </ng-container>-->
+
+        <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+        <tr mat-row *matRowDef="let device; columns: displayColumns" (click)="selectDevice(device)"></tr>
+      </table>
+    </div>
+    <div class="paination">
+    <div class="paination__info">
+      <span class="paination__num-title">Showing </span>
+      <span class="paination__num paination__num--active">12 </span>
+      <span class="paination__num"> /200</span>
+    </div>
+    <div class="paination__items">
+      <button class="paination__btn">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9.9697 4.71973L5.68945 8.99998L9.9697 13.2802L11.0302 12.2197L7.81045 8.99998L11.0302 5.78023L9.9697 4.71973Z" fill="black"/>
+        </svg>
+      </button>
+      <div class="paination__item paination__item--active">1</div>
+      <div class="paination__item">2</div>
+      <div class="paination__item">3</div>
+      <div class="paination__item">4</div>
+      <button class="paination__btn">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M8.03023 13.2802L12.3105 8.99998L8.03023 4.71973L6.96973 5.78023L10.1895 8.99998L6.96973 12.2197L8.03023 13.2802Z" fill="black"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+    <div class="add-device" *ngIf="modal">
+    <div class="add-device__inner">
+      <div class="add-device__bg" (click)="modal = false"></div>
+      <div class="add-device__content">
+      <div class="add-device__top">
+        <div class="add-device__title">Add new device</div>
+        <button class="add-device__close" (click)="modal = false">
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10.192 0.343994L5.94897 4.58599L1.70697 0.343994L0.292969 1.75799L4.53497 5.99999L0.292969 10.242L1.70697 11.656L5.94897 7.41399L10.192 11.656L11.606 10.242L7.36397 5.99999L11.606 1.75799L10.192 0.343994Z" fill="black"/>
+          </svg>
+        </button>
+      </div>
+      <app-add-device></app-add-device>
+    </div>
+    </div>
+  </div>
+</div>
+
