@@ -120,6 +120,7 @@
   },
   "defaultProject": "SelectiveLab-WebClient",
   "cli": {
+    "analytics": false,
     "defaultCollection": "@ngrx/schematics"
   }
 }
