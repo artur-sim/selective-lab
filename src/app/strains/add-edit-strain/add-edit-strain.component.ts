@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -13,6 +13,10 @@ import { StrainSummary } from '../../shared/models/strains/strain-summary.model'
   styleUrls: ['./add-edit-strain.component.scss']
 })
 export class AddEditStrainComponent implements OnInit, OnDestroy {
+  @Output() closeModal = new EventEmitter<boolean>();
+  close() {
+    this.closeModal.emit();
+  }
 
   strainForm: FormGroup;
   isLoading = false;
@@ -36,7 +40,7 @@ export class AddEditStrainComponent implements OnInit, OnDestroy {
       const id = params.get('id');
       if (id) {
         this.store.dispatch(strainActions.StrainEditActions.loadStrain({ id }));
-        
+
       }
     });
 
@@ -62,7 +66,7 @@ export class AddEditStrainComponent implements OnInit, OnDestroy {
         strain.id == this.currentStrainId;
       }
       this.store.dispatch((strain.id) ? strainActions.StrainEditActions.editStrain({ strain }) : strainActions.StrainAddActions.addStrain({ strain }));
-   
+
     }
   }
 

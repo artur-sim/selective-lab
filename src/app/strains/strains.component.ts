@@ -55,7 +55,4 @@ export class StrainsComponent implements OnInit {
     this.route.navigate([`/dashboard/strains/add-edit/${strainId}`]);
   }
 
-  addStrain() {
-    this.modal = true
-  }
 }

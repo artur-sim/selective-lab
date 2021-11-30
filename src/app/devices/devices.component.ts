@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Input, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -13,6 +13,7 @@ import {AddDeviceComponent} from "./add-device/add-device.component";
   styleUrls: ['./devices.component.scss']
 })
 export class DevicesComponent implements OnInit {
+
 
   // devices$: Observable<DeviceSummary[]>;
   devices$ = [
@@ -55,7 +56,6 @@ export class DevicesComponent implements OnInit {
     this.route.navigate([`/dashboard/devices/${device.id}`]);
   }
 
-  addDevice() {
-    this.modal = true
-  }
+
+
 }

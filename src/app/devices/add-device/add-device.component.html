@@ -23,5 +23,5 @@
         </div>
 
         <button mat-raised-button class="add-device__confirm btn btn-danger" type="button" (click)="register()" [disabled]="!deviceForm.valid || isLoading">Add device</button>
-        <button class="add-device__reset btn btn-outline">Cancel</button>
+        <button class="add-device__reset btn btn-outline" (click)="close()">Cancel</button>
     </form>

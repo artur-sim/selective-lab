@@ -1,4 +1,4 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -10,6 +10,10 @@ import { deviceActions } from 'src/app/root-store';
   styleUrls: ['./add-device.component.scss']
 })
 export class AddDeviceComponent implements OnInit, OnDestroy {
+  @Output() closeModal = new EventEmitter<boolean>();
+  close() {
+    this.closeModal.emit();
+  }
 
   deviceForm: FormGroup;
   isLoading = false;
@@ -40,7 +44,7 @@ export class AddDeviceComponent implements OnInit, OnDestroy {
   register() {
     this.isLoading = true;
     if(this.deviceForm.valid) {
-      
+
       const registration = { ...this.deviceForm.value };
 
       this.store.dispatch(deviceActions.DeviceAddActions.registerDevice({ registration }));
